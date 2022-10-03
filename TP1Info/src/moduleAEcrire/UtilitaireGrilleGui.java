@@ -1,5 +1,6 @@
+
 public class UtilitaireGrilleGui {
 	
-	
+	setImage()
 
 }
