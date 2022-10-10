@@ -1,77 +1,80 @@
+package source;
 import javax.swing.JOptionPane;
 
+import programe.Carte;
+
 /*
-Le jeu memSuite est un nom inventé dans le cadre du tp1 INF111 H18.  C'est un
-jeu de mémoire pour retrouver des suites de cartes cachées (voir énoncé fourni).
+Le jeu memSuite est un nom inventï¿½ dans le cadre du tp1 INF111 H18.  C'est un
+jeu de mï¿½moire pour retrouver des suites de cartes cachï¿½es (voir ï¿½noncï¿½ fourni).
 
-La règle du jeu est simple.  Des cartes sont brassées et disposées à l'envers à 
-l'utilisateur en N lignes et M colonnes!  L'utilisateur doit sélectionner sans
- erreur des suites de cartes de même sorte.
+La rï¿½gle du jeu est simple.  Des cartes sont brassï¿½es et disposï¿½es ï¿½ l'envers ï¿½ 
+l'utilisateur en N lignes et M colonnes!  L'utilisateur doit sï¿½lectionner sans
+ erreur des suites de cartes de mï¿½me sorte.
 
-Le jeu retient les statistiques sur la plus grande séquence obtenue 
-(1, 2, 3, ..., n cartes consécutives), le nombre d'essais dans la partie,
-le nombre de réussites depuis le début de la partie et le nombre d'essais en
+Le jeu retient les statistiques sur la plus grande sï¿½quence obtenue 
+(1, 2, 3, ..., n cartes consï¿½cutives), le nombre d'essais dans la partie,
+le nombre de rï¿½ussites depuis le dï¿½but de la partie et le nombre d'essais en
 moyenne.
 
-Les règles sont les suivantes :
-	- Une carte est retournée.  Impossible d'annuler.
+Les rï¿½gles sont les suivantes :
+	- Une carte est retournï¿½e.  Impossible d'annuler.
 	- Tant qu'il y a une suite (1,2,3 ou 3,4,5, ou 10,V,D,R ...) les cartes 
-	  restent dévoilées.  Le jeu se termine lorque toutes les cartes sont 
-	  dévoilées.
+	  restent dï¿½voilï¿½es.  Le jeu se termine lorque toutes les cartes sont 
+	  dï¿½voilï¿½es.
 	- Il faut un minimum de 2 cartes pour une suite.
 	- Une carte seule de la mauvaise couleur compte pour un essai.
 	- Une suite compte pour un essai.
 	- Il n'y a pas de suivante au ROI et L'AS vient avant 2.
 
 
-Le code ne dépasse pas 80 colonnes.
-Remarquez l'aération du code (l'espace entre les lignes).
+Le code ne dï¿½passe pas 80 colonnes.
+Remarquez l'aï¿½ration du code (l'espace entre les lignes).
 
- * Auteur: Pierre Bélisle
+ * Auteur: Pierre Bï¿½lisle
  * Version : Copyright A2022
  */
 
 public class DemarrerMemSuite {
 
 	/*
-	 * Stratégie globale : On utilise les SP des différents modules pour obtenir
+	 * Stratï¿½gie globale : On utilise les SP des diffï¿½rents modules pour obtenir
 	 * une grille GUI dont on se sert pour afficher les cartes du jeu. 
 	 * 
-	 * C'est ici qu'on initialise le jeu et qu'on gère la boucle principale qui 
-	 * se termine si l'utilisateur quitte.  S'il réussit, un message de 
-	 * félicitations est donné et certaines statistiques sont initialisées.
+	 * C'est ici qu'on initialise le jeu et qu'on gï¿½re la boucle principale qui 
+	 * se termine si l'utilisateur quitte.  S'il rï¿½ussit, un message de 
+	 * fï¿½licitations est donnï¿½ et certaines statistiques sont initialisï¿½es.
 	 * 
-	 * Pour gérer les clics, il n'y a que 2 possibilités. Un clic sur un 
+	 * Pour gï¿½rer les clics, il n'y a que 2 possibilitï¿½s. Un clic sur un 
 	 * bouton de menu ou sur une carte. 
 	 */
 	public static void main(String[] args) {
 			
-		// Création de l'interface graphique qui permet de voir les cartes 
+		// Crï¿½ation de l'interface graphique qui permet de voir les cartes 
 		// et de jouer.
 		GrilleGui gui = new GrilleGui(Constantes.NB_SORTES, 
 				Constantes.NB_CARTES/Constantes.NB_SORTES);
 
-		// Les statistique à maintenir.
+		// Les statistique ï¿½ maintenir.
 		Stats stats = new Stats();		
 
 		// Il faut afficher un jeu neuf avant chaque nouvelle partie.  Pour ne 
-		// pas avoir à réouvrir les fichiers à chaque fois, on garde le jeu 
+		// pas avoir ï¿½ rï¿½ouvrir les fichiers ï¿½ chaque fois, on garde le jeu 
 		// neuf et on travaille sur une copie.
 		Carte[] jeuNeuf = UtilitaireSysteme.obtenirJeuCartesNeuf();
 		Carte[] cartesAffichees = UtilitaireTableauCartes.copieDuJeu(jeuNeuf);
 		
 
-		// Retient l'état du jeu.
+		// Retient l'ï¿½tat du jeu.
 		EtatJeu etatJeu = new EtatJeu();
 		
-		// Création du tableau de séquences avec le maximum possible. 
+		// Crï¿½ation du tableau de sï¿½quences avec le maximum possible. 
 		etatJeu.tabSequence =  new int[Constantes.CARTES_PAR_SORTES];
 
 		// Boucle qui se termine si l'utilisateur quitte 
 		// en cliquant sur X ou le bouton quitter.
 		while(!etatJeu.partieTerminee){
 
-			// À faire entre chaque partie.
+			// ï¿½ faire entre chaque partie.
 			etatJeu.ilYaSequence = true;
 			etatJeu.longueurSequence = 0;
 			stats.nbEssaieActuel = 0;			
@@ -81,30 +84,30 @@ public class DemarrerMemSuite {
 			UtilitaireJeu.initialiserJeu(jeuNeuf, cartesAffichees, gui, etatJeu);
 
 			/*
-			 * Tant que toutes les cartes ne sont pas tournées ou que 
-			 * l'utilisateur n'a  pas quitté, on continue.
+			 * Tant que toutes les cartes ne sont pas tournï¿½es ou que 
+			 * l'utilisateur n'a  pas quittï¿½, on continue.
 			 * 
 			 * Se lit aussi : Tantque toutes les cartes ne sont pas toutes 
-			 *                tournées et que la partie n'est pas terminée.
+			 *                tournï¿½es et que la partie n'est pas terminï¿½e.
 			 * 
 			 */
 			while(!(UtilitaireTableauCartes
 							.toutesLesCartesSontTournee(cartesAffichees)  || 
 											etatJeu.partieTerminee)) {
 
-				// Procédure locale.
+				// Procï¿½dure locale.
 				gererClic(jeuNeuf, cartesAffichees, gui, stats, etatJeu);
 
 			}	
 			
-			// Si la boucle s'est terminée, c'est parce que toutes les cartes 
-			// sont tournées ou que l'utilisateur a annulé.  S'il n'a pas 
-			// annulé, on le félicite et on se prépare à la prochaine partie.
+			// Si la boucle s'est terminï¿½e, c'est parce que toutes les cartes 
+			// sont tournï¿½es ou que l'utilisateur a annulï¿½.  S'il n'a pas 
+			// annulï¿½, on le fï¿½licite et on se prï¿½pare ï¿½ la prochaine partie.
 			if(!etatJeu.partieTerminee) {
 
 				JOptionPane.showMessageDialog(null, 
 						"Bravo, vous avez " + 
-								++ stats.nbReussites + " réussite(s)");
+								++ stats.nbReussites + " rï¿½ussite(s)");
 
 				UtilitaireStats.ajusterStatsNouvellePartie(stats);
 				}			
@@ -114,7 +117,7 @@ public class DemarrerMemSuite {
 		System.exit(0);
 }
 	/*
-	 * Permet à l'utilisateur de cliquer sur une carte ou sur un des 
+	 * Permet ï¿½ l'utilisateur de cliquer sur une carte ou sur un des 
 	 * boutons du menu.
 	 */
 	private static void gererClic(Carte[] jeuNeuf, 
@@ -124,17 +127,17 @@ public class DemarrerMemSuite {
 
 		etatJeu.partieTerminee = false;
 
-		// Laisse le temps à l'utilisateur de cliquer (important).
+		// Laisse le temps ï¿½ l'utilisateur de cliquer (important).
 		gui.pause(1);
 
 		// On effectue un tour s'il y a eu un clic  sur une case.
-		// Une seule carte est traitée à chaque tour.
+		// Une seule carte est traitï¿½e ï¿½ chaque tour.
 		if(gui.caseEstCliquee()){
 
 			UtilitaireJeu.effectuerUnTour(cartes, gui, stats, etatJeu);
 		}
 
-		// L'utilisateur a cliqué sur un des boutons d'option, on gère le menu.
+		// L'utilisateur a cliquï¿½ sur un des boutons d'option, on gï¿½re le menu.
 		else if(gui.optionMenuEstCliquee()) {
 
 			etatJeu.partieTerminee =

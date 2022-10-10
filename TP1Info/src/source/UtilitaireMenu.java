@@ -1,28 +1,31 @@
+package source;
 import javax.swing.JOptionPane;
 
+import programe.Carte;
+
 /*
- * Classe qui contient les SP pour gérer les boutons d'options
- * de menu montrés dans le GUI.
+ * Classe qui contient les SP pour gï¿½rer les boutons d'options
+ * de menu montrï¿½s dans le GUI.
  * 
  * S'il y a ajout de bouton dans le module Constantes, il faut modifier cette 
- * classe et y ajouter le comportement désiré.
+ * classe et y ajouter le comportement dï¿½sirï¿½.
  * 
- * Auteur: Pierre Bélisle
+ * Auteur: Pierre Bï¿½lisle
  * Version : Copyright A2022
  */
 public class UtilitaireMenu {
 	
 	
 	/*
-	 * Vérifie quelle option de menu a été choisie et démarre la bonne
-	 * fonctionnalité.
+	 * Vï¿½rifie quelle option de menu a ï¿½tï¿½ choisie et dï¿½marre la bonne
+	 * fonctionnalitï¿½.
 	 * 
-	 * @param jeuNeuf Un jeu pas brasssé
-	 * @param cartes  Le jeu de cartes affichées
-	 * @param gui La fenêtre qui  montre les cartes et les boutons
-	 * @param stats Les statistiqwues à maintenir
-	 * @param etatJeu Les détails sur le jeu.
-	 * @return true si l'utilisateur a cliqué sur le bouton pour quitter.
+	 * @param jeuNeuf Un jeu pas brasssï¿½
+	 * @param cartes  Le jeu de cartes affichï¿½es
+	 * @param gui La fenï¿½tre qui  montre les cartes et les boutons
+	 * @param stats Les statistiqwues ï¿½ maintenir
+	 * @param etatJeu Les dï¿½tails sur le jeu.
+	 * @return true si l'utilisateur a cliquï¿½ sur le bouton pour quitter.
 	 */
 	public static boolean gererMenu(Carte[] jeuNeuf, 
 			Carte[] cartes, 
@@ -31,14 +34,14 @@ public class UtilitaireMenu {
 			EtatJeu etatJeu){
 
 		/*
-		 * Stratégie : Agit simplement comme distributeur de tâche selon 
+		 * Stratï¿½gie : Agit simplement comme distributeur de tï¿½che selon 
 		 *             l'option du menu choisie par l'utlisateur dand le gui.
 		 *                  
-		 *             On a créé un sous-programme pour chaque situation
-		 *             même si c'était possible de réutiliser en une seule ligne
+		 *             On a crï¿½ï¿½ un sous-programme pour chaque situation
+		 *             mï¿½me si c'ï¿½tait possible de rï¿½utiliser en une seule ligne
 		 *             de code (voir: montrer_stats).
 		 *                  
-		 *             Doit être modifié si on ajoute des options de menu dans 
+		 *             Doit ï¿½tre modifiï¿½ si on ajoute des options de menu dans 
 		 *             le tableau-constante TAB_OPTIONS_MENU.
 		 */
 		

@@ -1,8 +1,9 @@
+package source;
 /*
- * Contient les déclarations de constantes globales pour le tp1 inf111 H18
- * (voir énoncé fourni).
+ * Contient les dï¿½clarations de constantes globales pour le tp1 inf111 H18
+ * (voir ï¿½noncï¿½ fourni).
  *
- * Auteur: Pierre Bélisle
+ * Auteur: Pierre Bï¿½lisle
  * Version : Copyright A2022
  */
 public class Constantes {
@@ -13,7 +14,7 @@ public class Constantes {
 	 
  	public static final int CARTES_PAR_SORTES = NB_CARTES / NB_SORTES;
  	
- 	// Pour la lisibilité.
+ 	// Pour la lisibilitï¿½.
  	public static final int AS = 1;
  	public static final int ROI = 13;
  	 
@@ -23,14 +24,14 @@ public class Constantes {
  	// Sorte.values() pour obtenir les 4 constantes dans un tableau.
  	public  static enum Sorte {COEUR, CARREAU, TREFLE,  PIQUE};
  	
-	//Nécessaire à l'affichage des options du menu présenté dans le GUI.
+	//Nï¿½cessaire ï¿½ l'affichage des options du menu prï¿½sentï¿½ dans le GUI.
 	public static final String[] TAB_OPTIONS_MENU = {"Nouvelle partie",
 			"Voir cartes",
 			"Prochaine carte",		 
 			"Statistiques", 
 			"Quitter"};
 
-	// Position dans le tableau des options du menu pour les méthodes 
+	// Position dans le tableau des options du menu pour les mï¿½thodes 
     // de brassage de cartes.
 	public static final int METHODE_ALEA = 0;		
 	public static final int METHODE_PAQUETS = 1;		

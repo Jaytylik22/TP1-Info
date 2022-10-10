@@ -1,3 +1,4 @@
+package source;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -15,11 +16,11 @@ import javax.swing.JPanel;
  * Grille de jeu rectangulaire qui permet d'obtenir s'il y  eu un clic, 
  * la position du clic et modifier l'image d'une case.
  * 
- * Cette classe est complète et fourni aux étudiants.  Elles n'a pas à être 
- * étudié mais plutôt à être utilisé.  Dans un autre contexte, ce serait conçu
- * bien différemment.
+ * Cette classe est complï¿½te et fourni aux ï¿½tudiants.  Elles n'a pas ï¿½ ï¿½tre 
+ * ï¿½tudiï¿½ mais plutï¿½t ï¿½ ï¿½tre utilisï¿½.  Dans un autre contexte, ce serait conï¿½u
+ * bien diffï¿½remment.
  * 
- * Les méthodes publiques :
+ * Les mï¿½thodes publiques :
  * 
  * 							pause(int)
  * 							setImage(int, int, Icon)
@@ -31,40 +32,40 @@ import javax.swing.JPanel;
  * 
  *  
  * 
- * author Pierre Bélisle
+ * author Pierre Bï¿½lisle
  * Version : copyright H2018
  */
 public class GrilleGui  implements Runnable{
 
 	/*
-	 * STRATÉGIE : On met des boutons dans un panneau mais on les retient aussi 
+	 * STRATï¿½GIE : On met des boutons dans un panneau mais on les retient aussi 
 	 *                        dans une grille.  Une classe interne MonJButton 
-	 *                        hérite de JButton à laquelle on ajoute des 
+	 *                        hï¿½rite de JButton ï¿½ laquelle on ajoute des 
 	 *                        attributs pour retenir la position du bouton dans
-	 *                         la grille.  Tout cela pour éviter la recherche du 
+	 *                         la grille.  Tout cela pour ï¿½viter la recherche du 
 	 *                        bouton lors d'un clic (deux boucles en moins).
 	 *                        
-	 *                        Un booléen permet de retenir si un bouton a été 
-	 *                        cliqué et il est remis à faux après une lecture 
+	 *                        Un boolï¿½en permet de retenir si un bouton a ï¿½tï¿½ 
+	 *                        cliquï¿½ et il est remis ï¿½ faux aprï¿½s une lecture 
 	 *                        de la position par son accesseur.
 	 */
 
 	 // On compose dans un cadre.
 	private JFrame cadre = new JFrame();
 
-	// La grille qui sera affichée (classse interne décrite à la fin).
+	// La grille qui sera affichï¿½e (classse interne dï¿½crite ï¿½ la fin).
 	private MonJButton [][] grille;
 
 	// La position en y,x du dernier clic.
 	private Coordonnee dernierClic;
 
-	// Mis à vrai lors d'un clic et à faux dans getPosition().
+	// Mis ï¿½ vrai lors d'un clic et ï¿½ faux dans getPosition().
 	private boolean estClique;
 		
 	
 	private JPanel panneauPrincipal ;
 
-	// La taille de l'écran.
+	// La taille de l'ï¿½cran.
 	private Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 
 	// Retenir le tableau des options de menus.
@@ -73,15 +74,15 @@ public class GrilleGui  implements Runnable{
 	// Pour les options de meus du panneau du bas.
 	private boolean estBoutonMenu;
 	
-	// Vaudra le bouton cliqué s'il y a eu un clic sur un des boutons de menu
-	// et il est mis à null après getOptionMenu().
+	// Vaudra le bouton cliquï¿½ s'il y a eu un clic sur un des boutons de menu
+	// et il est mis ï¿½ null aprï¿½s getOptionMenu().
 	private String optionClique;
 	
-	// Retenir le mode de fermeture désirée.
+	// Retenir le mode de fermeture dï¿½sirï¿½e.
 	private int modeFermeture;
 	/**
 	/**
-	 * Crée une grille selon les dimensions reçues.
+	 * Crï¿½e une grille selon les dimensions reï¿½ues.
 	 * 
 	 * @param nbLignes L'axe des Y
 	 * @param nbColonnes L'axe des X
@@ -95,14 +96,14 @@ public class GrilleGui  implements Runnable{
 		// On retient les options du menu.
 		this.tabMenus = Constantes.TAB_OPTIONS_MENU;
 	
-		// On crée le tableau 2D (vide).
+		// On crï¿½e le tableau 2D (vide).
 		grille = new MonJButton[nbLignes][nbColonnes];
 
-		// Rien de cliqué à date.
+		// Rien de cliquï¿½ ï¿½ date.
 		estClique = false;
 		estBoutonMenu = false;
 
-		// On crée le panneau du bas avec les boutons de menu.
+		// On crï¿½e le panneau du bas avec les boutons de menu.
 
 		// On affiche le cadre dans un thread.
 		Thread t = new Thread(this);
@@ -111,7 +112,7 @@ public class GrilleGui  implements Runnable{
 	}
 
 	/**
-	 * Effectue une pause écran pous laisser le temps à l'utilisateur
+	 * Effectue une pause ï¿½cran pous laisser le temps ï¿½ l'utilisateur
 	 * de cliquer sur les boutons ou sur le X.
 	 * 
 	 * @param temps 
@@ -129,10 +130,10 @@ public class GrilleGui  implements Runnable{
 	}
 	
 	/**
-	 * Modifie l'image d'une case.  Si image est à null, la case est bleue.
+	 * Modifie l'image d'une case.  Si image est ï¿½ null, la case est bleue.
 	 * 
-	 * @param ligne, colonne La coordonnée de la case
-	 * @param image L'image à y mettre.
+	 * @param ligne, colonne La coordonnï¿½e de la case
+	 * @param image L'image ï¿½ y mettre.
 	 */
 	public void setImage(int ligne, int colonne, Icon image) {
 		
@@ -144,7 +145,7 @@ public class GrilleGui  implements Runnable{
 	 * Accesseur de la position du dernier clic.  Ne tient pas compte s'il y a
 	 * eu un clic ou non.
 	 * 
-	 * Remet l'état de la fenêtre comme non cliqué (caseEstCliquee() == false).
+	 * Remet l'ï¿½tat de la fenï¿½tre comme non cliquï¿½ (caseEstCliquee() == false).
 	 * 
 	 * @return S'il y a eu un clic.
 	 */
@@ -155,18 +156,18 @@ public class GrilleGui  implements Runnable{
 	}
 
 	/**
-	 * Retourne si vrai si un des boutons de menu a été cliqué.
+	 * Retourne si vrai si un des boutons de menu a ï¿½tï¿½ cliquï¿½.
 	 * 
-	 * @return Si un des boutons de menu a été cliqué.
+	 * @return Si un des boutons de menu a ï¿½tï¿½ cliquï¿½.
 	 */
 	public boolean optionMenuEstCliquee(){
 		return estBoutonMenu;
 	}
 	
 	/**
-	 * Retourne la dernière option cliquée et null autrement.
+	 * Retourne la derniï¿½re option cliquï¿½e et null autrement.
 	 * 
-	 * @return Le texte dans le bouton cliqué s'il y a lieu.
+	 * @return Le texte dans le bouton cliquï¿½ s'il y a lieu.
 	 */
 	public String getOptionMenuClique(){
 		
@@ -199,10 +200,10 @@ public class GrilleGui  implements Runnable{
 	
 	
 	/**
-	 * Retourne si un des boutons a été cliqué depuis le dernier appel à
+	 * Retourne si un des boutons a ï¿½tï¿½ cliquï¿½ depuis le dernier appel ï¿½
 	 * l'accesseur de position.
 	 * 
-	 * @return Si un des boutons a été sélectionné.
+	 * @return Si un des boutons a ï¿½tï¿½ sï¿½lectionnï¿½.
 	 */
 	public boolean caseEstCliquee(){		
 		return estClique;
@@ -220,13 +221,13 @@ public class GrilleGui  implements Runnable{
 	 */
 	private void initComposants() {
 
-		// Plein écran.
+		// Plein ï¿½cran.
 		cadre.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
 		// On quitte sur X.
 		cadre.setDefaultCloseOperation(modeFermeture);
 
-		// Obtention de la référence sur le contentPane (évite pls appels).
+		// Obtention de la rï¿½fï¿½rence sur le contentPane (ï¿½vite pls appels).
 		panneauPrincipal = (JPanel) cadre.getContentPane();
 
 		// Le panneau contenant la grille.
@@ -245,7 +246,7 @@ public class GrilleGui  implements Runnable{
 
 		else {
 			
-			// Le panneau du haut est plein écran s'il n'y a pas de menu en bas.
+			// Le panneau du haut est plein ï¿½cran s'il n'y a pas de menu en bas.
 			panneauPrincipal.add(panneauHaut);
 		}
 
@@ -255,21 +256,21 @@ public class GrilleGui  implements Runnable{
 	}
 
 	/**
-	 * Crée le panneau du bas ety y ajkoute les boutons du menu. 
+	 * Crï¿½e le panneau du bas ety y ajkoute les boutons du menu. 
 	 * Dimensionne les 2 panneaux (haut et bas) et les ajoute au 
 	 * panneau principal.
 	 * 
-	 * @param panneauHaut Doit être ajhouté au panneau principal.
+	 * @param panneauHaut Doit ï¿½tre ajhoutï¿½ au panneau principal.
 	 */
 	private void creerMenu(JPanel panneauHaut) {
 
-		// Les boutons de menu s'il y en a (FlowLayout par défaut).
+		// Les boutons de menu s'il y en a (FlowLayout par dï¿½faut).
 		JPanel panneauBas = new JPanel();		
 
 		Dimension dh = new Dimension (d.width, (int)(d.height*.8));
 		Dimension db = new Dimension (d.width, (int)(d.height*.1));
 
-		// Les dimensions de panneau pour l'allure de la fenêtre.
+		// Les dimensions de panneau pour l'allure de la fenï¿½tre.
 		dimensionner(panneauHaut, dh);
 		dimensionner(panneauBas, db);
 		
@@ -282,7 +283,7 @@ public class GrilleGui  implements Runnable{
 	/**
 	 * Regroupe les instructions pour dimensionner un composant.
 	 * 
-	 * @param panneau Le panneau à dimensionner.
+	 * @param panneau Le panneau ï¿½ dimensionner.
 	 * @param dh La dimension voulue.
 	 */
 	private void dimensionner(JPanel panneau, Dimension dh) {
@@ -307,7 +308,7 @@ public class GrilleGui  implements Runnable{
 
 			b =new JButton(tabMenus[i]);
 
-			// La dimension d'un bouton dépend de la taille de l'écran, 
+			// La dimension d'un bouton dï¿½pend de la taille de l'ï¿½cran, 
 			// on centre la grille.			
 			b.addActionListener(new ActionListener(){
 
@@ -329,7 +330,7 @@ public class GrilleGui  implements Runnable{
 	/*
 	 * Ajoute les boutons dans la grille et dans le panneau.
 	 * 
-	 * Principalement pour la lisibilité du code.
+	 * Principalement pour la lisibilitï¿½ du code.
 	 */
 	private void ajouterBoutons(JPanel panneau){
 
@@ -349,17 +350,17 @@ public class GrilleGui  implements Runnable{
 	
 	
 	/**
-	 * Classe interne qui ajoute à un JButton la position (x,y) où il se trouve 
+	 * Classe interne qui ajoute ï¿½ un JButton la position (x,y) oï¿½ il se trouve 
 	 * dans la grille.
 	 * 
-	 * Cela évite de chercher cette position lors d'un clic.
+	 * Cela ï¿½vite de chercher cette position lors d'un clic.
 	 */
 	private class MonJButton extends JButton{
 
 		// Juste enlever le warning.
 		private static final long serialVersionUID = 1L;
 		
-		// Coordonnée ligne colonne du bouton dans le GUI.
+		// Coordonnï¿½e ligne colonne du bouton dans le GUI.
 		private int ligne;
 		private int colonne;
 
@@ -368,14 +369,14 @@ public class GrilleGui  implements Runnable{
 		 * 
 		 * @param y La position en ligne
 		 * @param x La position en colonne
-		 * @param valeur La valeur à afficher
+		 * @param valeur La valeur ï¿½ afficher
 		 * @param images 
 		 */
 		private MonJButton(int ligne, int colonne, String valeur,
 				Color couleurTexte, 
 				Color couleurFond, Icon image){
 
-			// On passe le texte à la classe parent.
+			// On passe le texte ï¿½ la classe parent.
 			super(image);
 
 			this.ligne = ligne;
@@ -383,14 +384,14 @@ public class GrilleGui  implements Runnable{
 
 			setAlignmentX(JFrame.CENTER_ALIGNMENT);
 
-			// La dimension d'un bouton dépend de la taille de l'écran, 
+			// La dimension d'un bouton dï¿½pend de la taille de l'ï¿½cran, 
 			// on centre la grille			
 			addActionListener(new ActionListener(){
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
 
-					// On obtient la référence du bouton cliqué.
+					// On obtient la rï¿½fï¿½rence du bouton cliquï¿½.
 					MonJButton b = (MonJButton) e.getSource();
 
 					// On retient la position du clic.

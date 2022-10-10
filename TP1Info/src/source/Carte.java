@@ -1,25 +1,28 @@
+package source;
 import javax.swing.Icon;
 
+import source.Constantes.Sorte;
+
 /*
- * Représente une carte à jouer.
+ * Reprï¿½sente une carte ï¿½ jouer.
  * 
- * Spécial : Contient l'image correspondante à afficher.
+ * Spï¿½cial : Contient l'image correspondante ï¿½ afficher.
  * 
- * Auteur: Pierre Bélisle
+ * Auteur: Pierre Bï¿½lisle
  * Version : copyright A2022
  */
 public class Carte {
 	
-	// Le numéro de carte de Constantes.AS à Constantes.ROI.
+	// Le numï¿½ro de carte de Constantes.AS ï¿½ Constantes.ROI.
 	public int numero;  
 	
-	// COEUR à PIQUE.
+	// COEUR ï¿½ PIQUE.
 	public Constantes.Sorte couleur;  
 	
-	// L'image de la carte à montrer.
+	// L'image de la carte ï¿½ montrer.
 	public Icon image; 
 	
-	// Vrai si la carte est tournée vers le haut.
+	// Vrai si la carte est tournï¿½e vers le haut.
 	public boolean visible = true; 
 
 	// Sert principalement au DEBUG.

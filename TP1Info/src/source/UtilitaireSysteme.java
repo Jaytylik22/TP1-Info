@@ -1,34 +1,37 @@
+package source;
 import javax.swing.ImageIcon;
+
+import programe.Carte;
 
 public class UtilitaireSysteme {
 
 /*
- * Retourne un tableau de références de Carte.  Les cartes ont une image 
- * qui doit être prise dans le répertoire images/, qui doit être au même niveau 
- * que le répertoire src/ et les fichiers .gif doivent s'y trouver.
+ * Retourne un tableau de rï¿½fï¿½rences de Carte.  Les cartes ont une image 
+ * qui doit ï¿½tre prise dans le rï¿½pertoire images/, qui doit ï¿½tre au mï¿½me niveau 
+ * que le rï¿½pertoire src/ et les fichiers .gif doivent s'y trouver.
  *
- * Le tout a été monté sous Windows.  Il n'y a pas eu de test sur les autres 
+ * Le tout a ï¿½tï¿½ montï¿½ sous Windows.  Il n'y a pas eu de test sur les autres 
  * plateformes.
  * 
- * Auteur: Pierre Bélisle
+ * Auteur: Pierre Bï¿½lisle
  * Version : Copyright A2022
  */
 public static Carte[] obtenirJeuCartesNeuf() {
 	
 		Carte[] cartes = new Carte[Constantes.NB_CARTES];
 		
-		// Jack, Queen, King and Ace (Dû au noms de fichier).
+		// Jack, Queen, King and Ace (Dï¿½ au noms de fichier).
 		String[] figures = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10",
 									  "J", "Q", "K"};
 		
-		// heart, diamond, club and spade.  C'était les noms originaux des 
-		// fichiers que nous n'avons pas francisés.
-		String[] couleurs = {"h", "d", "c", "s"}; // Itérateur sur les couleurs. 
+		// heart, diamond, club and spade.  C'ï¿½tait les noms originaux des 
+		// fichiers que nous n'avons pas francisï¿½s.
+		String[] couleurs = {"h", "d", "c", "s"}; // Itï¿½rateur sur les couleurs. 
 
-		// Itérateur du tableau d'images.
+		// Itï¿½rateur du tableau d'images.
 		int pos = 0;
 		
-		// On obtient les sortes en provenance du type énumératif.
+		// On obtient les sortes en provenance du type ï¿½numï¿½ratif.
 		Constantes.Sorte[] lesCouleurs = Constantes.Sorte.values();
 		
 		// Un tour par sorte.
@@ -38,7 +41,7 @@ public static Carte[] obtenirJeuCartesNeuf() {
 				
 				cartes[pos] = new Carte();
 				
-				// Le répertoire images/ doit être au même niveau que src/ et
+				// Le rï¿½pertoire images/ doit ï¿½tre au mï¿½me niveau que src/ et
 				// les fichiers .gif doivent s'y trouver.
 				cartes[pos] .image =
 						new ImageIcon("images/" + 
