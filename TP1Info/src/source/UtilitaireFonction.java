@@ -1,14 +1,15 @@
+package source;
 /*
  * Offre des fonctions utilitaires communes au projet.
  * 
- * @author Pierre Bélisle
+ * @author Pierre Bï¿½lisle
  * @version A2022
  *
  */
 public class UtilitaireFonction {
 
 	/**
-	 * Retourne une nombre aléatoire dans un intervalle entier donné.
+	 * Retourne une nombre alï¿½atoire dans un intervalle entier donnï¿½.
 	 * 
 	 * @param min La plus petite valeur possible.
 	 * @param max La plus grande valeur possible.
@@ -18,7 +19,7 @@ public class UtilitaireFonction {
 	public static int alea(int min, int max){
 		
 		
-		// On reçoit une valeur entre 0 et 1 qu'on déplace entre min et max.
+		// On reï¿½oit une valeur entre 0 et 1 qu'on dï¿½place entre min et max.
 		return (int) Math.round(Math.random()* (max - min) + min);
 	}	
 

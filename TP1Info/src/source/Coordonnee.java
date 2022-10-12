@@ -1,3 +1,4 @@
+package source;
 /*
  * Cet enregistrement repr�sente les coordonn�es 
  * possibles dans diff�rents jeux de grille.
