@@ -39,6 +39,37 @@ public class UtilitaireTableauCartes {
 	}
 } 
 	 
+	public static Carte[] copieDuJeu(Carte[] jeuNeuf) {
+		
+		Carte[] cartes = new Carte[Constantes.NB_CARTES];
+		
+		cartes[] = jeuNeuf[];
+		
+		return cartes[];
+		
+	}
+	
+	
+	public static Carte [] melanger(Carte [ ] tableau,int nbSignificative ) {
+	
+	int	rotation =UtilitaireFonction.alea( 1, 10);
+	int	nbDeCarte =UtilitaireFonction.alea(3, 10);	
+	while (rotation >0) {
+		for(int i=0;i<nbDeCarte;i++){
+			int i2;
+			Carte finTableau= tableau[tableau.length-1];
+			
+			
+			for(i2=tableau.length-1;i2>0;i2--){
+			tableau[i2]=tableau[i2-1];
+			
+		}
+		tableau[0]=finTableau;
+		}
+		rotation--;
+	}
+} 
+	 
 	 /**
 	  * 
 	  * @param tableau
