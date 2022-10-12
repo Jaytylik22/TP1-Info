@@ -3,6 +3,17 @@ public class UtilitaireTableauCartes {
 /**
  * 
  */
+	public static Carte[] copieDuJeu(Carte[] jeuNeuf) {
+		
+		Carte[] cartes = new Carte[Constantes.NB_CARTES];
+		
+		cartes[] = jeuNeuf[];
+		
+		return cartes[];
+		
+	}
+	
+	
 	public static Carte [] melanger(Carte [ ] tableau,int nbSignificative ) {
 	
 	int	rotation =UtilitaireFonction.alea(int 1, int 10);
