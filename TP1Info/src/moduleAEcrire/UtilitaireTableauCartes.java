@@ -1,12 +1,20 @@
 package moduleAEcrire;
 import source.UtilitaireFonction;
+import source.Constantes;
 import source.Carte;
 /**
  * 
  * @author eleve
  *
  */
+
 public class UtilitaireTableauCartes {
+	/**
+	 * 
+	 * @param nbPaquets
+	 * @return
+	 */
+	//je cree un tableau 2D vide faite de cartes
 	public static Carte[][] initTableau2D(int nbPaquets){
 		Carte[][]tableau2D =new Carte [nbPaquets][];
 		return tableau2D;
@@ -16,13 +24,14 @@ public class UtilitaireTableauCartes {
 /**
  * 
  * @param tableau
- * @param nbSignificative
- * @return
  */
-	public static void melanger(Carte [ ] tableau,int nbSignificative ) {
-	
+	//je melange les carte en les deplacent 
+	public static void melanger(Carte [ ] tableau ) {
+	//je cree l'aleatoir avec le nombre de deplacement et la quatiter de cartes
 	int	rotation =UtilitaireFonction.alea( 1, 10);
 	int	nbDeCarte =UtilitaireFonction.alea(3, 10);	
+	
+	
 	while (rotation >0) {
 		for(int i=0;i<nbDeCarte;i++){
 			int i2;
@@ -42,36 +51,40 @@ public class UtilitaireTableauCartes {
 	 /**
 	  * 
 	  * @param tableau
-	  * @param tableauun
-	  * @param tableaudeux
-	  * @param nbSignificative
-	  * @return
+	  * @return tableau2D
 	  */
-	 public static void separer(Carte [ ] tableau,Carte [ ] tableauun,Carte
-			 [ ] tableaudeux,int nbSignificative ) {
-		 
-		int moitier=nbSignificative/2;
-		
+	//je cree deux autre paquet a partire d'un seul paquer. Je le retourne sous
+	//la forme d'une table 2D
+	 public static Carte [][] separer(Carte [ ] tableau) {
+		int nombreDePaquet=2;
+		int moitier=Constantes.NB_CARTES/nombreDePaquet;
+		Carte []tableauun=new Carte [moitier];
+		Carte []tableaudeux=new Carte [moitier];
+		Carte[][]tableau2D=initTableau2D(nombreDePaquet);
+		//je met la moitier dans le premier tableau
 		for(int i = 0; i< moitier; i++){
 			tableauun[i]= tableau[i];
 			
 			
 	 }
+		//je met la 2e moiter dans le 2 tableau
 		for(int i = moitier; i< tableau.length-1; i++){
 			tableaudeux[i-moitier]= tableau[i];
 		}
+		tableau2D[0]=tableauun;
+		tableau2D[1]=tableaudeux;
+		return tableau2D;
 	 }
-	 /**
-	  * 
-	  * @param tableau
-	  * @param tableauun
-	  * @param tableaudeux
-	  * @param nbSignificative
-	  * @return
-	  */
-		public static Carte [] fusion(Carte [ ] tableau,Carte [ ] tableauun,Carte
-				 [ ] tableaudeux,int nbSignificative ) {	
-			separer(tableau,tableauun,tableaudeux,nbSignificative);
+	/**
+	 * 
+	 * @param tableau
+	 */
+	 //fusionne les paquet 
+		public static void fusion(Carte [ ] tableau ) {
+			
+			Carte[][]tableau2D=separer(tableau);
+			Carte []tableauun=tableau2D[0];
+			Carte []tableaudeux=tableau2D[1];
 			int tab1nb=tableauun.length-1;
 			int tab2nb=tableaudeux.length-1;
 			int iterateurcarte=0;
@@ -98,13 +111,15 @@ public class UtilitaireTableauCartes {
 			}
 			iterateurcarte++;
 			}
-			return tableau;
+		
 	}
 		/**
 		 * 
 		 * @param tableau
-		 * @return
+		 * @return tableau
 		 */
+		//Je fait plusieur paquer ou je distribu les carte et je redistribu entre
+		//les parquet jusqu'a il en reste qu'un seul 
 		public static void MéthodeParPaquets(Carte [ ] tableau) {
 			int	nbTotalPaquet =UtilitaireFonction.alea( 6,8 );
 			int nbcarte=52;
