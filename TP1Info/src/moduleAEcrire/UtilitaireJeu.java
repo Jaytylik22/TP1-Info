@@ -38,7 +38,7 @@ public class UtilitaireJeu {
 		gui.pause(1);
 		
 		//Cacher les cartes
-		utilitaireGrilleGui.cacherCarteGui(jeuNeuf, gui);
+		utilitaireGrilleGui.cacherCarteGui(cartesAffichees, gui);
 		JOptionPane.showMessageDialog(null,"Etes-vous pret4 ?" );
 			
 	}
@@ -46,6 +46,7 @@ public class UtilitaireJeu {
 	public static void effectuerTour(Carte[] cartes, GrilleGui gui, Stats stats, EtatJeu etatJeu) {
 		
 		final Coordonnee dernierClic;
+		int co1d;
 		
 		
 		//obtenir la position du clic
@@ -53,19 +54,44 @@ public class UtilitaireJeu {
 		
 		
 		//Convertir la position de 2D a 1D(rows * nmb columns + columns)
-		
+		co1d = dernierClic.ligne * 13 + dernierClic.colonne;
 		
 		
 		
 		//Valider clic de la carte(2.1)
-		JOptionPane.showMessageDialog(null,"Etes-vous pret5 ?" );
+		if(cartes[co1d].visible == true) {
+			JOptionPane.showMessageDialog(null,"Votre coups est perdu" );
+			
+		}
+		else {
+			etatJeu.tabSequence[etatJeu.longueurSequence] = co1d;
+			cartes[co1d].visible = true;
+			//+1 essai
+		}
 		
 		
 		//Afficher les cartes
-		utilitaireGrilleGui.afficherCarteGui(cartes, gui);
+		utilitaireGrilleGui.afficherUneCarteGui(cartes, gui, dernierClic.ligne, dernierClic.colonne, co1d);
 		
 		//Gerer la situation de séquence(2.2)
-		
+		if(etatJeu.longueurSequence == 0) {
+			etatJeu.longueurSequence++;
+		}
+		else {
+			if(cartes[co1d].numero - 1 == cartes[etatJeu.tabSequence[etatJeu.longueurSequence - 1]].numero/* && cartes[co1d].couleur == cartes[etatJeu.tabSequence[etatJeu.longueurSequence - 1]].couleur*/) {
+				etatJeu.ilYaSequence = true;
+				etatJeu.longueurSequence++;
+			}
+			else{
+				JOptionPane.showMessageDialog(null,"Bris de sequence" );
+				utilitaireGrilleGui.cacherUneCarteGui(cartes, gui, dernierClic.ligne, dernierClic.colonne, co1d);
+				if(etatJeu.longueurSequence == 1) {
+					cartes[etatJeu.tabSequence[etatJeu.longueurSequence - 1]].visible = false;
+				}
+				etatJeu.longueurSequence = 0;
+			}
+		}
+		//Mettre record de sequence si plus gros que l'ancien
 		
 		//Afficher les cartes
 		

@@ -11,6 +11,6 @@ public class Coordonnee {
 	/*
 	 * Les items choisis par l'utilisateur. testt
 	 */
-	int ligne;
-	int colonne;
+	public int ligne;
+	public int colonne;
 }

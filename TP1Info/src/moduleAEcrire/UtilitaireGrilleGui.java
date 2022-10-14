@@ -34,5 +34,21 @@ public class UtilitaireGrilleGui {
 				}	
 			}
 		}
-	}
+	
+
+	public void afficherUneCarteGui(Carte[] jeuNeuf, GrilleGui gui, int rows, int columns, int co1d) {
+		
+					gui.setImage(rows, columns, jeuNeuf[co1d].image);
+					jeuNeuf[co1d].visible = true;
+				}	
+			
+	
+	public void cacherUneCarteGui(Carte[] jeuNeuf, GrilleGui gui, int rows, int columns, int co1d) {
+	
+				gui.setImageNull(rows, columns);
+				jeuNeuf[co1d].visible = false;
+			}	
+		}
+	
+		
 	
