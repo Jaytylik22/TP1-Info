@@ -1,20 +1,14 @@
 package moduleAEcrire;
+
 import source.UtilitaireFonction;
-import source.Constantes;
 import source.Carte;
+import source.Constantes;
 /**
  * 
  * @author eleve
  *
  */
-
 public class UtilitaireTableauCartes {
-	/**
-	 * 
-	 * @param nbPaquets
-	 * @return
-	 */
-	//je cree un tableau 2D vide faite de cartes
 	public static Carte[][] initTableau2D(int nbPaquets){
 		Carte[][]tableau2D =new Carte [nbPaquets][];
 		return tableau2D;
@@ -24,14 +18,37 @@ public class UtilitaireTableauCartes {
 /**
  * 
  * @param tableau
- */
-	//je melange les carte en les deplacent 
+ * @param nbSignificative
+ * @return
+ */ 
+	 
+	public static Carte[] copieDuJeu(Carte[] jeuNeuf) {
+		
+		Carte[] cartes = new Carte[Constantes.NB_CARTES];
+		
+		cartes = jeuNeuf;
+		
+		return cartes;
+		
+	}
+	
+	public static void méthodeParBrassage(Carte [ ] tableau ) {
+		int incrementateur=0;
+		Carte [ ] tableauFinal=new Carte[Constantes.NB_CARTES];
+		int nbDeFoisMelanger=UtilitaireFonction.alea( 4, 10);
+		while (incrementateur <nbDeFoisMelanger) {
+			incrementateur++;
+			melanger(tableau);
+			tableauFinal=fusion(separer(tableau));
+		}
+		
+		System.arraycopy(tableauFinal, 0, tableau, 0, Constantes.NB_CARTES);
+		
+	}
 	public static void melanger(Carte [ ] tableau ) {
-	//je cree l'aleatoir avec le nombre de deplacement et la quatiter de cartes
+	
 	int	rotation =UtilitaireFonction.alea( 1, 10);
-	int	nbDeCarte =UtilitaireFonction.alea(3, 10);	
-	
-	
+	int	nbDeCarte =UtilitaireFonction.alea(2, 10);	
 	while (rotation >0) {
 		for(int i=0;i<nbDeCarte;i++){
 			int i2;
@@ -51,10 +68,9 @@ public class UtilitaireTableauCartes {
 	 /**
 	  * 
 	  * @param tableau
-	  * @return tableau2D
+	  * @return tableau2D : un tableau contenant plusieur (2) autre tableau 
+	  * (paquet) de carte 
 	  */
-	//je cree deux autre paquet a partire d'un seul paquer. Je le retourne sous
-	//la forme d'une table 2D
 	 public static Carte [][] separer(Carte [ ] tableau) {
 		int nombreDePaquet=2;
 		int moitier=Constantes.NB_CARTES/nombreDePaquet;
@@ -78,24 +94,26 @@ public class UtilitaireTableauCartes {
 	/**
 	 * 
 	 * @param tableau
+	 * @return tableaufinal : un tableau de carte melanger 
 	 */
-	 //fusionne les paquet 
-		public static void fusion(Carte [ ] tableau ) {
+	 
+	 
+		public static Carte[] fusion(Carte [][] tableau ) {
 			
-			Carte[][]tableau2D=separer(tableau);
-			Carte []tableauun=tableau2D[0];
-			Carte []tableaudeux=tableau2D[1];
+			Carte []tableauun=tableau[0];
+			Carte []tableaudeux=tableau[1];
 			int tab1nb=tableauun.length-1;
 			int tab2nb=tableaudeux.length-1;
 			int iterateurcarte=0;
 			int iterateurtable=0;
+			Carte []tableaufinal;
 			while (iterateurtable<tab1nb&&iterateurtable<tab2nb) {
 				
 			if (iterateurcarte%2==0) {
 				
 			
 			for(int i = iterateurcarte; i< i+1 ; i++){
-				tableau[iterateurtable]=tableauun[i] ;
+				tableau[0][iterateurtable]=tableauun[i] ;
 				iterateurtable ++;
 				
 				}
@@ -105,21 +123,20 @@ public class UtilitaireTableauCartes {
 			else
 			{
 				for(int i = iterateurcarte; i< i+1 ; i++){
-					tableau[iterateurtable]=tableaudeux[i] ;
+					tableau[0][iterateurtable]=tableaudeux[i] ;
 					iterateurtable ++;
 			}
 			}
 			iterateurcarte++;
 			}
-		
+			tableaufinal=tableau[0];
+			return tableaufinal;
 	}
 		/**
 		 * 
 		 * @param tableau
-		 * @return tableau
+		 * @return
 		 */
-		//Je fait plusieur paquer ou je distribu les carte et je redistribu entre
-		//les parquet jusqu'a il en reste qu'un seul 
 		public static void MéthodeParPaquets(Carte [ ] tableau) {
 			int	nbTotalPaquet =UtilitaireFonction.alea( 6,8 );
 			int nbcarte=52;
@@ -187,6 +204,23 @@ public class UtilitaireTableauCartes {
 			
 			//remet toutes les cartes melanger dans le tableau
 			System.arraycopy(reference, 0, tableau, 0, nbcarte);
+			
+		}
+		
+		public static boolean toutesLesCartesSontTournee(Carte[] cartesAffichees) {
+			
+			boolean result = true;
+			for(int i = 0; i < cartesAffichees.length; i++) {
+				
+				if(cartesAffichees[i].visible = false) {
+					result = false;
+				}
+			}
+			
+			
+			
+			
+			return result;
 			
 		}
 	
