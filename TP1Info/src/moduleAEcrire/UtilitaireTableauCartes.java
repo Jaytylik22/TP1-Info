@@ -1,8 +1,12 @@
 package moduleAEcrire;
 
 import source.UtilitaireFonction;
+
+import javax.swing.ImageIcon;
+
 import source.Carte;
 import source.Constantes;
+
 /**
  * 
  * @author eleve
@@ -21,38 +25,28 @@ public class UtilitaireTableauCartes {
  * @param nbSignificative
  * @return
  */
-	public static void melanger(Carte [ ] tableau,int nbSignificative ) {
-	
-	int	rotation =UtilitaireFonction.alea( 1, 10);
-	int	nbDeCarte =UtilitaireFonction.alea(3, 10);	
-	while (rotation >0) {
-		for(int i=0;i<nbDeCarte;i++){
-			int i2;
-			Carte finTableau= tableau[tableau.length-1];
-			
-			
-			for(i2=tableau.length-1;i2>0;i2--){
-			tableau[i2]=tableau[i2-1];
-			
-		}
-		tableau[0]=finTableau;
-		}
-		rotation--;
-	}
-} 
-	 
 	public static Carte[] copieDuJeu(Carte[] jeuNeuf) {
 		
 		Carte[] cartes = new Carte[Constantes.NB_CARTES];
 		
-		cartes[] = jeuNeuf[];
+		for(int i = 0; i < jeuNeuf.length; i++) {
+			
+			cartes[i] = new Carte();
+			
+			cartes[i].image = jeuNeuf[i].image;
+			
+			cartes[i].numero = jeuNeuf[i].numero;	
+			
+			cartes[i].couleur = jeuNeuf[i].couleur;
+			
+		}
 		
-		return cartes[];
+		return cartes;
 		
 	}
 	
 	
-	public static Carte [] melanger(Carte [ ] tableau,int nbSignificative ) {
+	public static Carte[] melanger(Carte[] tableau) {
 	
 	int	rotation =UtilitaireFonction.alea( 1, 10);
 	int	nbDeCarte =UtilitaireFonction.alea(3, 10);	
@@ -65,12 +59,13 @@ public class UtilitaireTableauCartes {
 			for(i2=tableau.length-1;i2>0;i2--){
 			tableau[i2]=tableau[i2-1];
 			
+			}
+			tableau[0]=finTableau;
+			}
+			rotation--;
 		}
-		tableau[0]=finTableau;
-		}
-		rotation--;
-	}
-} 
+		return tableau;
+	} 
 	 
 	 /**
 	  * 
@@ -138,7 +133,7 @@ public class UtilitaireTableauCartes {
 		 * @param tableau
 		 * @return
 		 */
-		public static void MéthodeParPaquets(Carte [ ] tableau) {
+		public static Carte[] MéthodeParPaquets(Carte [ ] tableau) {
 			int	nbTotalPaquet =UtilitaireFonction.alea( 6,8 );
 			int nbcarte=52;
 			int increnbpaquet=0;
@@ -164,13 +159,14 @@ public class UtilitaireTableauCartes {
 			 }
 			 // retourne tout dans le tableau de basse  
 			 System.arraycopy(tableau2D[0], 0, tableau, 0, nbcarte);
+			 return tableau;
 			
 		}
 		/**
 		 * 
 		 * @param tableau
 		 */
-		public static void MéthodeParPositionAléatoire (Carte [] tableau) {
+		public static Carte[] MéthodeParPositionAléatoire (Carte [] tableau) {
 			int nbcarte=52;
 			int incrementateur=0;
 			boolean boucle=false;
@@ -205,6 +201,7 @@ public class UtilitaireTableauCartes {
 			
 			//remet toutes les cartes melanger dans le tableau
 			System.arraycopy(reference, 0, tableau, 0, nbcarte);
+			return tableau;
 			
 		}
 		
@@ -213,7 +210,7 @@ public class UtilitaireTableauCartes {
 			boolean result = true;
 			for(int i = 0; i < cartesAffichees.length; i++) {
 				
-				if(cartesAffichees[i].visible = false) {
+				if(cartesAffichees[i].visible == false) {
 					result = false;
 				}
 			}

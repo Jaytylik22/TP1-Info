@@ -140,6 +140,12 @@ public class GrilleGui  implements Runnable{
 		grille[ligne][colonne].setIcon(image);
 		
 	}
+	
+	public void setImageNull(int ligne, int colonne) {
+		
+		grille[ligne][colonne].setIcon(null);
+		
+	}
 		
 	/**
 	 * Accesseur de la position du dernier clic.  Ne tient pas compte s'il y a

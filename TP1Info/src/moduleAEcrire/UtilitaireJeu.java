@@ -11,13 +11,9 @@ import javax.swing.JOptionPane;
 public class UtilitaireJeu {
 
 	static UtilitaireGrilleGui utilitaireGrilleGui = new UtilitaireGrilleGui();
+	static UtilitaireTableauCartes utilitaireTableauCartes = new UtilitaireTableauCartes();
 	
 	public static void initialiserJeu(Carte[] jeuNeuf,Carte[] cartesAffichees,GrilleGui gui,EtatJeu etatJeu) {
-		
-		
-		
-		//Brasser les cartes avec la méthode
-		
 		
 		//Afficher le nouveau paquet
 		utilitaireGrilleGui.afficherCarteGui(jeuNeuf, gui);
@@ -28,16 +24,22 @@ public class UtilitaireJeu {
 		
 		//Cacher les cartes
 		utilitaireGrilleGui.cacherCarteGui(jeuNeuf, gui);
+		JOptionPane.showMessageDialog(null,"Etes-vous pret2 ?" );
+		
+		//Brasser les cartes avec la méthode
+		cartesAffichees = utilitaireTableauCartes.melanger(cartesAffichees);
 		
 		//Copier le jeu de carte dans un tableau temporaire et afficher la copie du tableau ???
 		// paquet2 paquet1.clone(); 
 		utilitaireGrilleGui.afficherCarteGui(cartesAffichees, gui);
+		JOptionPane.showMessageDialog(null,"Etes-vous pret3 ?" );
 		
 		//Faire une pause en secondes
 		gui.pause(1);
 		
 		//Cacher les cartes
 		utilitaireGrilleGui.cacherCarteGui(jeuNeuf, gui);
+		JOptionPane.showMessageDialog(null,"Etes-vous pret4 ?" );
 			
 	}
 	
@@ -56,6 +58,7 @@ public class UtilitaireJeu {
 		
 		
 		//Valider clic de la carte(2.1)
+		JOptionPane.showMessageDialog(null,"Etes-vous pret5 ?" );
 		
 		
 		//Afficher les cartes
