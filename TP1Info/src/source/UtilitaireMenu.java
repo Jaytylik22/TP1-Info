@@ -1,7 +1,6 @@
 package source;
-import javax.swing.JOptionPane;
-
-import programe.Carte;
+import moduleAEcrire.UtilitaireJeu;
+import moduleAEcrire.UtilitaireStats;
 
 /*
  * Classe qui contient les SP pour g�rer les boutons d'options

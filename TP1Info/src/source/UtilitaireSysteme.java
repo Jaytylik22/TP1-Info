@@ -1,8 +1,6 @@
 package source;
 import javax.swing.ImageIcon;
 
-import programe.Carte;
-
 public class UtilitaireSysteme {
 
 /*

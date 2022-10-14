@@ -1,6 +1,8 @@
 package moduleAEcrire;
+
 import source.UtilitaireFonction;
 import source.Carte;
+import source.Constantes;
 /**
  * 
  * @author eleve
@@ -203,6 +205,23 @@ public class UtilitaireTableauCartes {
 			
 			//remet toutes les cartes melanger dans le tableau
 			System.arraycopy(reference, 0, tableau, 0, nbcarte);
+			
+		}
+		
+		public static boolean toutesLesCartesSontTournee(Carte[] cartesAffichees) {
+			
+			boolean result = true;
+			for(int i = 0; i < cartesAffichees.length; i++) {
+				
+				if(cartesAffichees[i].visible = false) {
+					result = false;
+				}
+			}
+			
+			
+			
+			
+			return result;
 			
 		}
 	

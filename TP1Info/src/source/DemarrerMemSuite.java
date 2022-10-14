@@ -1,7 +1,8 @@
 package source;
 import javax.swing.JOptionPane;
-
-import programe.Carte;
+import moduleAEcrire.UtilitaireTableauCartes;
+import moduleAEcrire.UtilitaireJeu;
+import moduleAEcrire.UtilitaireStats;
 
 /*
 Le jeu memSuite est un nom invent� dans le cadre du tp1 INF111 H18.  C'est un
@@ -134,7 +135,7 @@ public class DemarrerMemSuite {
 		// Une seule carte est trait�e � chaque tour.
 		if(gui.caseEstCliquee()){
 
-			UtilitaireJeu.effectuerUnTour(cartes, gui, stats, etatJeu);
+			UtilitaireJeu.effectuerTour(cartes, gui, stats, etatJeu);
 		}
 
 		// L'utilisateur a cliqu� sur un des boutons d'option, on g�re le menu.
