@@ -3,6 +3,13 @@ package moduleAEcrire;
 import source.Carte;
 import source.GrilleGui;
 
+/*
+ * Réprésente les fonctions utilisé afin de faire marcher le gui
+ * 
+ * Auteur: Jérome Bouchard
+ * Version : copyright A2022
+ */
+
 public class UtilitaireGrilleGui {
 	
 	private int compteur;
@@ -36,14 +43,16 @@ public class UtilitaireGrilleGui {
 		}
 	
 
-	public void afficherUneCarteGui(Carte[] jeuNeuf, GrilleGui gui, int rows, int columns, int co1d) {
+	public void afficherUneCarteGui(Carte[] jeuNeuf, GrilleGui gui, int rows,
+			int columns, int co1d) {
 		
 					gui.setImage(rows, columns, jeuNeuf[co1d].image);
 					jeuNeuf[co1d].visible = true;
 				}	
 			
 	
-	public void cacherUneCarteGui(Carte[] jeuNeuf, GrilleGui gui, int rows, int columns, int co1d) {
+	public void cacherUneCarteGui(Carte[] jeuNeuf, GrilleGui gui, int rows,
+			int columns, int co1d) {
 	
 				gui.setImageNull(rows, columns);
 				jeuNeuf[co1d].visible = false;

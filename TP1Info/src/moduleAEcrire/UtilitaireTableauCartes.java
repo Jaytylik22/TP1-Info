@@ -225,6 +225,12 @@ public class UtilitaireTableauCartes {
                     }
                 }
             }
+
+
+
+
+            //remet toutes les cartes melanger dans le tableau
+            System.arraycopy(reference, 0, tableau, 0, 52);
 		}
 		/**
 		 * 
